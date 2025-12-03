@@ -9,6 +9,7 @@ export class Preloader extends Scene {
     this.load.image("background", "assets/snake_bg.jpg");
     this.load.image("apple", "assets/snake_apple.png");
     this.load.image("head", "assets/snake_heads.png");
+    this.load.image("segment", "assets/circle.png");
   }
 
   create() {
