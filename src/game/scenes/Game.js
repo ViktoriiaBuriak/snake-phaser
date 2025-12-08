@@ -6,6 +6,13 @@ export class Game extends Scene {
   }
 
   create() {
+    this.score = 0;
+
+    this.scoreText = this.add.text(1000, 48, "Score: 0", {
+      fontSize: "32px",
+      fill: "#fff",
+    });
+
     const gridSize = 64;
     const gridCount = 15;
     const offset = gridSize / 2;
@@ -42,6 +49,10 @@ export class Game extends Scene {
       callback: this.moveSnake,
       callbackScope: this,
       loop: true,
+    });
+
+    this.input.keyboard.on("keydown-SPACE", () => {
+      this.moveTimer.paused = !this.moveTimer.paused;
     });
   }
 
@@ -134,6 +145,9 @@ export class Game extends Scene {
         .setOrigin(0.5)
         .setVisible(false);
       this.snakeBody.push(newSegment);
+
+      this.score += 10;
+      this.scoreText.setText("Score: " + this.score);
       newSegment.setVisible(true); //доопрацювання
 
       this.shouldGrow = false;
@@ -157,13 +171,6 @@ export class Game extends Scene {
     }
 
     this.snake.setRotation(targetAngle);
-
-    // this.tweens.add({
-    //   targets: this.snake,
-    //   rotation: targetAngle,
-    //   duration: 100,
-    //   ease: "Power1",
-    // });
 
     for (let i = 1; i < this.snakeBody.length; i++) {
       if (

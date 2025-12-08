@@ -7,8 +7,8 @@ export class MainMenu extends Scene {
 
   create() {
     this.cameras.main.setBackgroundColor(0x48bb4a);
-    this.add.image(450, 300, "head");
-    this.add.image(510, 300, "apple");
+    this.add.image(590, 350, "head");
+    this.add.image(660, 350, "apple");
 
     this.add
       .text(this.scale.width / 2, this.scale.height / 2, "Start", {
